@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app = "quoteBook">
+<head>
+  <title></title>
+  <link type = 'text/css' rel = 'styles' href = 'styles.css'/>
+
+</head>
+<body ng-controller = "mainCtrl">
+
+  <h1>QuoteBook!</h1>
+  <form class ="form-inline searchForm" role = 'form'>
+    <div class = "form-group">
+    <input class = "form-control" placeholder="search" type = "text" ng-model = "searchFor">
+    </div>
+
+  <div class = "quotes" ng-repeat = "quote in quotes | filter: searchFor:strict">
+    <h3 class = 'quote'>{{quote.text}}</h3>
+    <h6 class = "text">By: {{quote.author}}</h6>
+  </div>
+
+  <form class="form-inline searchForm" role="form">
+    <div class="form-group">
+    <input class = "form control" placeholder = "Author's name" type = 'text' ng-model = "newQuote.author">
+    <input Class = "form control" placeholder = "A quote to remember" type = "text" ng-model ="newQuote.text">
+    <button ng-click = "add(newQuote)" = >Submit</button>
+    <br>
+    <button ng-click="save()" ng-show = "quotes.length != 7" >Save</button>
+    <button ng-click="load()"ng-show = "quotes.length != 7">Load</button>
+
+    </div>
+  </form>
+
+
+  <form class="form-inline searchForm" role="form">
+    <div class="form-group">
+    <input Class = "form control" placeholder = "What to remove" type = "text" ng-model ="removeThis">
+    <button ng-click = "removeQuote(removeThis)">Remove</button>
+
+    </div>
+  </form>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+  <script src = 'js/app.js'></script>
+  <script src = 'js/dataServices.js'></script>
+  <script src = 'js/mainCtrl.js'></script>
+  <script src = 'styles.css'></script>
+
+</body>
+
+</html>
